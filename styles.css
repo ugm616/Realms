@@ -1,0 +1,339 @@
+/* Global styles and variables */
+:root {
+    --primary-color: #2a4d69;
+    --secondary-color: #4b86b4;
+    --accent-color: #adcbe3;
+    --text-light: #e7eff6;
+    --text-dark: #2a4d69;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --panel-bg: rgba(231, 239, 246, 0.95);
+    --header-bg: #2a4d69;
+    --border-color: #4b86b4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e7eff6;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Header */
+.game-header {
+    background-color: var(--header-bg);
+    color: var(--text-light);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.game-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.gold-display {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 215, 0, 0.2);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* World Map */
+.world-map-container {
+    flex: 3;
+    position: relative;
+    overflow: hidden;
+    background-color: #c8d8e6;
+}
+
+.world-map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* Replace the missing image with a gradient */
+    background: linear-gradient(to bottom, #a4ccff, #078dd8);
+    background-size: cover;
+}
+
+.map-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.map-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--panel-bg);
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.map-controls button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Game Interface (Right Sidebar) */
+.game-interface {
+    flex: 1;
+    background-color: rgba(42, 77, 105, 0.1);
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+/* Panels */
+.panel {
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.panel h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+/* Resources Panel */
+.resources-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.resource-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+}
+
+.resource-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.resource-name {
+    font-weight: bold;
+}
+
+.resource-rate {
+    color: var(--success-color);
+    font-size: 0.8rem;
+}
+
+/* Population Panel */
+.population-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.worker-allocation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.worker-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.controls {
+    display: flex;
+    gap: 5px;
+}
+
+.controls button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.minus {
+    background-color: #ffcccb;
+}
+
+.plus {
+    background-color: #ccffcc;
+}
+
+/* Country Panel */
+.country-info h4 {
+    margin-bottom: 10px;
+}
+
+#diplomatic-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#diplomatic-actions button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+#btn-trade {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+#btn-ally {
+    background-color: var(--success-color);
+    color: white;
+}
+
+#btn-declare-war {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Actions Panel */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-buttons button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Modal */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}

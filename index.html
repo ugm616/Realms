@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Realm - Diplomatic Idle RTS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header with game title and player info -->
+        <header class="game-header">
+            <div class="game-title">Fantasy Realm</div>
+            <div class="player-info">
+                <span class="player-name">Ruler of <span id="player-country">Eldoria</span></span>
+                <div class="gold-display">
+                    <i class="fas fa-coins"></i>
+                    <span id="gold-amount">1000</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- World Map -->
+            <div class="world-map-container">
+                <div id="world-map" class="world-map"></div>
+                <!-- Map controls -->
+                <div class="map-controls">
+                    <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                    <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                </div>
+            </div>
+
+            <!-- Game Interface -->
+            <div class="game-interface">
+                <!-- Resources Panel -->
+                <div class="panel resources-panel">
+                    <h3>Resources <i class="fas fa-box-open"></i></h3>
+                    <div class="resources-container">
+                        <div class="resource" id="wood">
+                            <div class="resource-icon"><i class="fas fa-tree"></i></div>
+                            <div class="resource-info">
+                                <span class="resource-name">Wood</span>
+                                <span class="resource-amount">100</span>
+                                <span class="resource-rate">+2/min</span>
+                            </div>
+                        </div>
+                        <div class="resource" id="iron">
+                            <div class="resource-icon"><i class="fas fa-hammer"></i></div>
+                            <div class="resource-info">
+                                <span class="resource-name">Iron</span>
+                                <span class="resource-amount">50</span>
+                                <span class="resource-rate">+1/min</span>
+                            </div>
+                        </div>
+                        <div class="resource" id="gems">
+                            <div class="resource-icon"><i class="fas fa-gem"></i></div>
+                            <div class="resource-info">
+                                <span class="resource-name">Gems</span>
+                                <span class="resource-amount">10</span>
+                                <span class="resource-rate">+0.2/min</span>
+                            </div>
+                        </div>
+                        <!-- More resources will be added dynamically -->
+                    </div>
+                </div>
+
+                <!-- Population Panel -->
+                <div class="panel population-panel">
+                    <h3>Population <i class="fas fa-users"></i></h3>
+                    <div class="population-info">
+                        <div class="population-total">Total: <span id="total-population">100</span></div>
+                        <div class="population-idle">Idle: <span id="idle-population">80</span></div>
+                    </div>
+                    <div class="worker-allocation">
+                        <div class="worker-type">
+                            <span>Woodcutters:</span>
+                            <span id="woodcutter-count">5</span>
+                            <div class="controls">
+                                <button class="minus" data-worker="woodcutter">-</button>
+                                <button class="plus" data-worker="woodcutter">+</button>
+                            </div>
+                        </div>
+                        <div class="worker-type">
+                            <span>Miners:</span>
+                            <span id="miner-count">3</span>
+                            <div class="controls">
+                                <button class="minus" data-worker="miner">-</button>
+                                <button class="plus" data-worker="miner">+</button>
+                            </div>
+                        </div>
+                        <div class="worker-type">
+                            <span>Gem Collectors:</span>
+                            <span id="gemcollector-count">2</span>
+                            <div class="controls">
+                                <button class="minus" data-worker="gemcollector">-</button>
+                                <button class="plus" data-worker="gemcollector">+</button>
+                            </div>
+                        </div>
+                        <!-- More worker types will be added -->
+                    </div>
+                </div>
+
+                <!-- Country Information Panel (shown when a country is selected) -->
+                <div class="panel country-panel" id="country-panel">
+                    <h3>Country Information <i class="fas fa-flag"></i></h3>
+                    <div class="country-info hidden">
+                        <h4 id="selected-country-name">Select a Country</h4>
+                        <div id="country-details">
+                            <p>Select a country on the map to view details</p>
+                        </div>
+                        <div id="diplomatic-actions" class="hidden">
+                            <button id="btn-trade">Trade</button>
+                            <button id="btn-ally">Form Alliance</button>
+                            <button id="btn-declare-war">Declare War</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions Panel -->
+                <div class="panel actions-panel">
+                    <h3>Actions <i class="fas fa-bolt"></i></h3>
+                    <div class="action-buttons">
+                        <button id="btn-build">Build <i class="fas fa-hammer"></i></button>
+                        <button id="btn-research">Research <i class="fas fa-flask"></i></button>
+                        <button id="btn-recruit">Recruit <i class="fas fa-shield-alt"></i></button>
+                        <button id="btn-diplomacy">Diplomacy <i class="fas fa-handshake"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div id="modal-container" class="modal-container hidden">
+            <div class="modal" id="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <!-- Modal content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript files -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/country.js"></script>
+<script src="js/map.js"></script>
+<script src="js/diplomacy.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
